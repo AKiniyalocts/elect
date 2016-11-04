@@ -1,5 +1,6 @@
 package com.akiniyalocts.elect.electives;
 
+import android.support.annotation.StringRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 
@@ -13,5 +14,9 @@ public interface HasDrawer extends HasTitleToolbar{
     NavigationView navigationView();
 
     NavigationView.OnNavigationItemSelectedListener navigationListener();
+
+    @StringRes int openTitle();
+
+    @StringRes int closedTitle();
 
 }

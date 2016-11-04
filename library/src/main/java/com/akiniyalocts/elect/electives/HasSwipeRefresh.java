@@ -6,7 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 /**
  * Created by anthonykiniyalocts on 1/23/16.
  */
-public interface HasSwipeRefresh {
+public interface HasSwipeRefresh extends Elective{
 
     SwipeRefreshLayout refreshLayout();
 

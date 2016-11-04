@@ -4,24 +4,19 @@ import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import com.akiniyalocts.elect.electives.HasContentView;
+import android.view.MenuItem;
+
 import com.akiniyalocts.elect.electives.HasDrawer;
 import com.akiniyalocts.elect.electives.HasHomeAsUp;
 import com.akiniyalocts.elect.electives.HasSwipeRefresh;
 import com.akiniyalocts.elect.electives.HasTitleToolbar;
 import com.akiniyalocts.elect.electives.HasToolbar;
-import butterknife.ButterKnife;
 
 public abstract class ElectActivity extends AppCompatActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if(this instanceof HasContentView){
-            setContentView(((HasContentView)this).contentView());
-            ButterKnife.bind(this);
-        }
 
         if(this instanceof HasToolbar){
             initActionBar();
@@ -91,6 +86,11 @@ public abstract class ElectActivity extends AppCompatActivity{
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onBackPressed() {
         if(this instanceof HasDrawer){
             HasDrawer hasDrawer = (HasDrawer) this;
@@ -106,15 +106,6 @@ public abstract class ElectActivity extends AppCompatActivity{
             super.onBackPressed();
         }
 
-    }
-
-    @Override
-    protected void onDestroy() {
-        if(this instanceof HasContentView) {
-            ButterKnife.unbind(this);
-        }
-
-        super.onDestroy();
     }
 
 }
